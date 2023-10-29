@@ -24,9 +24,9 @@ const Navbar = () => {
   return (
     <section className="flex flex-col">
       <div
-        className={`navbar w-screen h-[80px] flex items-center justify-between px-[2rem] fixed text-white text-[1.5rem] z-30 ${
+        className={`navbar w-screen h-[80px] flex items-center justify-between px-[2rem] fixed text-white lg:text-[1.5rem] z-30 ${
           color ? "bg-[rgba(0,0,0,0.9)]" : ""
-        } ${istoggle ? "bg-[rgba(0,0,0,0.9)]" : ""}`}
+        } ${istoggle ? "bg-[rgba(0,0,0,0.9)]" : ""} md:text-[1.2rem]`}
       >
         <div className="Navlogo text-[1.8em] text-red-600 font-bold">
           FlixChill
@@ -38,7 +38,7 @@ const Navbar = () => {
           <h3>Recently Added</h3>
           <h3>My List</h3>
         </nav>
-        <div className="NavLinks NavBtns text-[1.3em] flex items-center gap-8">
+        <div className="NavBtns text-[1.3em] flex items-center gap-8">
           <button>
             <AiOutlineSearch />
           </button>
