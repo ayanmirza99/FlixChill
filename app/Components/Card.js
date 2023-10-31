@@ -1,16 +1,18 @@
 "use client";
+import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const Cards = ({ data, title, loading }) => {
+const Cards = ({ data, title, type }) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-      slidesToSlide: 5,
+      items: 6,
+      slidesToSlide: 6,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1064 },
       items: 4,
       slidesToSlide: 4,
     },
@@ -38,15 +40,32 @@ const Cards = ({ data, title, loading }) => {
         <Carousel responsive={responsive} containerClass="carousel-container">
           {data.map((movie, index) => {
             return (
-              <div
-                className="h-[250px] w-full 2xl:w-[400px] xl:w-[300px] lg:w-[250px] md:w-[220px] sm:w-[300px]"
-                key={index}
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
+              <Link href={`/home/${type}/${movie.id}`}>
+                <div
+                  className="h-[250px] card w-full 2xl:w-[450px] xl:w-[300px] lg:w-[250px] md:w-[220px] sm:w-[300px]"
+                  key={index}
+                >
+                  <img
+                    src={
+                      movie && movie.backdrop_path ? (
+                        `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                      ) : (
+                        <Skeleton
+                          height={250}
+                          width={400}
+                          baseColor="#202020"
+                          highlightColor="#444"
+                        />
+                      )
+                    }
+                    className="h-full w-full object-cover object-center relative"
+                  />
+                  <div className="card-info absolute flex flex-col items-start justify-end font-semibold text-[1rem] p-4 top-0 h-full w-full text-white invisible [transition:all_0.3s] bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
+                    <h1>{movie.original_title || movie.original_name}</h1>
+                    <h1>imdb: {movie.vote_average}</h1>
+                  </div>
+                </div>
+              </Link>
             );
           })}
         </Carousel>

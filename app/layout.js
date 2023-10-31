@@ -1,4 +1,5 @@
 import './globals.css'
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   title: 'FlixChill',
@@ -8,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NextTopLoader color='rgb(220 38 38)' height={4} easing="ease"/>
+        {children}
+        </body>
     </html>
   )
 }

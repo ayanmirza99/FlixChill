@@ -13,7 +13,7 @@ const page = () => {
         </h1>
         <button
           className="bg-red-600 text-[0.6em] p-5 bottom-80 rounded-xl font-bold  @apply shadow-[6px_6px_0_#8d2536] transition-transform duration-[0.1s,box-shadow] delay-[0.1s] active:translate-x-2 active:translate-y-2 active:shadow-[0_0_0_#8d2536]}"
-          onClick={()=> router.push("/login")}
+          onClick={() => router.push("/login")}
         >
           Get Started
         </button>

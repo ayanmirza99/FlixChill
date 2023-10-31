@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <section className="flex flex-col">
       <div
-        className={`navbar w-screen h-[80px] flex items-center justify-between px-[2rem] fixed text-white lg:text-[1.5rem] z-30 ${
+        className={`navbar w-screen h-[80px] flex items-center justify-between px-[2rem] fixed text-white lg:text-[1.5rem] z-50 ${
           color ? "bg-[rgba(0,0,0,0.9)]" : ""
         } ${istoggle ? "bg-[rgba(0,0,0,0.9)]" : ""} md:text-[1.2rem]`}
       >
@@ -57,8 +57,10 @@ const Navbar = () => {
         </div>
       </div>
       {istoggle && (
-        <nav className="NavLinks text-[1.2em] z-30 fixed pt-[10px] pb-[40px] top-[80px] w-full bg-[rgba(0,0,0,0.9)] text-white font-bold flex items-center justify-center
-        flex-col gap-10">
+        <nav
+          className="NavLinks text-[1.2em] z-50 fixed pt-[10px] pb-[40px] top-[80px] w-full bg-[rgba(0,0,0,0.9)] text-white font-bold flex items-center justify-center
+        flex-col gap-10"
+        >
           <h3>Home</h3>
           <h3>TV Shows</h3>
           <h3>Movies</h3>
