@@ -37,7 +37,7 @@ const Cards = ({ data, title, type }) => {
         <h1>{title}</h1>
       </div>
       <div className="w-full px-[2.1rem]">
-        <Carousel responsive={responsive} containerClass="carousel-container">
+        <Carousel responsive={responsive} containerClass="carousel-container" draggable={true}>
           {data.map((movie, index) => {
             return (
               <Link href={`/home/${type}/${movie.id}`}>
@@ -61,8 +61,8 @@ const Cards = ({ data, title, type }) => {
                     className="h-full w-full object-cover object-center relative"
                   />
                   <div className="card-info absolute flex flex-col items-start justify-end font-semibold text-[1rem] p-4 top-0 h-full w-full text-white invisible [transition:all_0.3s] bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
-                    <h1>{movie.original_title || movie.original_name}</h1>
-                    <h1>imdb: {movie.vote_average}</h1>
+                    <h1>{movie.title || movie.name}</h1>
+                    <h1>imdb: {movie.vote_average && parseFloat((movie.vote_average).toFixed(1))}</h1>
                   </div>
                 </div>
               </Link>

@@ -5,7 +5,6 @@ import Cards from "../Components/Card";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-// import CardSkeleton from "../Components/CardSkeleton";
 
 const page = () => {
   const [isloading, setIsloading] = useState(true);
@@ -24,11 +23,11 @@ const page = () => {
       store(data.results);
       // console.log(data.re);
       if (store && store.length > 0) {
-        setIsloading(false)
+        setIsloading(false);
       }
     } catch (error) {
       console.log(error);
-    }finally{
+    } finally {
       // setTimeout(()=>{
       //   setIsloading(false);
       // }, 1000)
@@ -51,18 +50,12 @@ const page = () => {
       "https://api.themoviedb.org/3/movie/upcoming?api_key=",
       setUpcomingMovies
     );
-    getData(
-      "https://api.themoviedb.org/3/tv/popular?api_key=",
-      setPopularTV
-    );
+    getData("https://api.themoviedb.org/3/tv/popular?api_key=", setPopularTV);
     getData(
       "https://api.themoviedb.org/3/tv/top_rated?api_key=",
       setTopRatedTV
     );
-    getData(
-      "https://api.themoviedb.org/3/tv/on_the_air?api_key=",
-      setOnAirTV
-    )
+    getData("https://api.themoviedb.org/3/tv/on_the_air?api_key=", setOnAirTV);
   }, []);
 
   return (
@@ -77,18 +70,42 @@ const page = () => {
             {Array(12)
               .fill(0)
               .map((item, index) => {
-                return <Skeleton height={250} width={400} key={index} baseColor="#202020" highlightColor="#444"/>;
+                return (
+                  <Skeleton
+                    height={250}
+                    width={400}
+                    key={index}
+                    baseColor="#202020"
+                    highlightColor="#444"
+                  />
+                );
               })}
           </div>
         ) : (
           <section className="h-max w-full flex-col flex">
-            <Cards data={popularMovies} title={"Popular Movies"} type={"movie"}/>
-            <Cards data={topRatedMovies} title={"Top Rated Movies"} type={"movie"}/>
-            <Cards data={nowPlayingMovies} title={"Now Playing Movies"} type={"movie"}/>
-            <Cards data={upcomingMoies} title={"Upcoming Movies"} type={"movie"}/>
-            <Cards data={popoularTV} title={"Popular TV Shows"} type={"tv"}/>
-            <Cards data={topRatedTV} title={"Top Rated TV Shows"} type={"tv"}/>
-            <Cards data={onAirTV} title={"Top Rated TV Shows"} type={"tv"}/>
+            <Cards
+              data={popularMovies}
+              title={"Popular Movies"}
+              type={"movie"}
+            />
+            <Cards
+              data={topRatedMovies}
+              title={"Top Rated Movies"}
+              type={"movie"}
+            />
+            <Cards
+              data={nowPlayingMovies}
+              title={"Now Playing Movies"}
+              type={"movie"}
+            />
+            <Cards
+              data={upcomingMoies}
+              title={"Upcoming Movies"}
+              type={"movie"}
+            />
+            <Cards data={popoularTV} title={"Popular TV Shows"} type={"tv"} />
+            <Cards data={topRatedTV} title={"Top Rated TV Shows"} type={"tv"} />
+            <Cards data={onAirTV} title={"Top Rated TV Shows"} type={"tv"} />
           </section>
         )}
       </section>

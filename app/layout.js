@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning>
         <NextTopLoader color='rgb(220 38 38)' height={4} easing="ease"/>
         {children}
         </body>
