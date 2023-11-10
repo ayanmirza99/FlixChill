@@ -1,5 +1,4 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import { BsPlayFill, BsPlusLg } from "react-icons/bs";
@@ -8,12 +7,21 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Link from "next/link";
 
 function ImageSlider({ data, loading }) {
+  const buttonStyle = {
+    width: "0",
+    background: "none",
+  };
+
+  const properties = {
+    prevArrow: <button style={{ ...buttonStyle }}></button>,
+    nextArrow: <button style={{ ...buttonStyle }}></button>,
+  };
   return (
     <div className="slide_container">
-      <Slide>
+      <Slide {...properties}>
         {data.map((movie, index) => (
           <div
-            className="flex items-center w-screen justify-center h-[95vh] bg-cover relative top-0"
+            className="flex items-center w-screen justify-center h-[95vh] bg-cover relative"
             key={index}
           >
             <div className="w-[100vw] h-[95vh] fixed">

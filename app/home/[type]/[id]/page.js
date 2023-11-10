@@ -1,10 +1,14 @@
 "use client";
+import Navbar from "@/app/Components/Navbar";
 import Review from "@/app/Components/Review";
+import { useGlobalContext } from "@/app/Context";
 import React, { useEffect, useState } from "react";
+import { CgAdd, CgTrashEmpty } from "react-icons/cg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const page = ({ params }) => {
+  const [addBtn, setAddBtn] = useState(true);
   const { id } = params;
   const { type } = params;
 
@@ -25,7 +29,9 @@ const page = ({ params }) => {
     } catch (e) {
       console.log(e);
     } finally {
-      setIsloading(false);
+      if (details && details !== "") {
+        setIsloading(false);
+      }
     }
   };
   useEffect(() => {
@@ -39,8 +45,38 @@ const page = ({ params }) => {
     return formattedDate;
   };
 
+  const { myList, setMyList, setType } = useGlobalContext();
+
+  useEffect(() => {
+    if (details && myList) {
+      let addedIndex = myList.find((item) => item.id === details.id);
+      if (addedIndex) {
+        setAddBtn(false);
+      } else {
+        setAddBtn(true);
+      }
+    }
+  }, [details]);
+
+  const addToMyList = () => {
+    if (addBtn === true) {
+      myList.push(details);
+      setMyList(myList);
+      setAddBtn(false);
+      setType(type);
+      console.log(myList);
+    } else {
+      const toBeDeletedIndex = myList.findIndex(
+        (item) => item.id === details.id
+      );
+      myList.splice(toBeDeletedIndex, 1);
+      setMyList(myList);
+      setAddBtn(true);
+    }
+  };
   return (
     <>
+      <Navbar />
       <section className="header bg-[rgba(0,0,0,0.9)] h-[76vh] md:h-[85vh] w-full">
         <div className="w-full h-[50vh] md:h-[65vh] bg-center bg-cover relative">
           {isloading ? (
@@ -112,14 +148,34 @@ const page = ({ params }) => {
             width={150}
           />
         ) : (
-          <button className="p-4 px-6 md:px-10 rounded-lg bg-red-600 text-white font-bold text[0.9rem] md:text-[1.2rem] hover:scale-105 duration-300">
-            <a
-              href={`https://www.imdb.com/title/${details.imdb_id}`}
-              target="_blank"
+          <div className="flex gap-6">
+            <button className="p-4 px-6 md:px-10 rounded-lg bg-yellow-500 text-white font-bold text[0.9rem] md:text-[1.2rem] hover:scale-105 duration-300">
+              <a
+                href={`https://www.imdb.com/title/${details.imdb_id}`}
+                target="_blank"
+              >
+                Visit IMDb
+              </a>
+            </button>
+            <button
+              className={`p-4 px-6 md:px-10 rounded-lg ${
+                addBtn ? "bg-red-600" : "bg-red-800"
+              } text-white font-bold text[0.9rem] md:text-[1.2rem] hover:scale-105 duration-300`}
+              onClick={addToMyList}
             >
-              Visit IMDb
-            </a>
-          </button>
+              {addBtn ? (
+                <div className="flex gap-2">
+                  <CgAdd className="text-[2rem]" />
+                  <h1>My List</h1>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <CgTrashEmpty className="text-[2rem]" />
+                  <h1>My List</h1>
+                </div>
+              )}
+            </button>
+          </div>
         )}
       </div>
       <section className="body w-full h-max flex xl:flex-row flex-col bg-[rgba(0,0,0,0.9)] text-white">
@@ -142,30 +198,19 @@ const page = ({ params }) => {
                 />
               </div>
               <div className="flex flex-col gap-6 mt-4">
-                <Skeleton
-                  baseColor="#202020"
-                  highlightColor="#444"
-                  width={600}
-                  height={25}
-                />
-                <Skeleton
-                  baseColor="#202020"
-                  highlightColor="#444"
-                  width={600}
-                  height={25}
-                />
-                <Skeleton
-                  baseColor="#202020"
-                  highlightColor="#444"
-                  width={600}
-                  height={25}
-                />
-                <Skeleton
-                  baseColor="#202020"
-                  highlightColor="#444"
-                  width={600}
-                  height={25}
-                />
+                {Array(4)
+                  .fill(0)
+                  .map((item, index) => {
+                    return (
+                      <Skeleton
+                        key={index}
+                        baseColor="#202020"
+                        highlightColor="#444"
+                        width={600}
+                        height={25}
+                      />
+                    );
+                  })}
               </div>
             </>
           ) : (

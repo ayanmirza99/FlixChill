@@ -39,7 +39,7 @@ body::-webkit-scrollbar-track {
   visibility: visible;
 }
 @layer components {
-  .NavLinks > h3{
+  .NavLinks > a{
     @apply hover:text-red-600 cursor-pointer duration-200;
   }
   .NavLinks > button{

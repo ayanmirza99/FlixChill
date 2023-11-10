@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "../Components/Navbar";
 import ImageSlider from "../Components/ImageSlider";
-import Cards from "../Components/Card";
+import HomeCards from "../Components/HomeCards";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -11,7 +11,7 @@ const page = () => {
   const [popularMovies, setPopulerMovies] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [upcomingMoies, setUpcomingMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [popoularTV, setPopularTV] = useState([]);
   const [topRatedTV, setTopRatedTV] = useState([]);
   const [onAirTV, setOnAirTV] = useState([]);
@@ -21,16 +21,10 @@ const page = () => {
       const response = await fetch(url + process.env.NEXT_PUBLIC_MOVIE_KEY);
       const data = await response.json();
       store(data.results);
-      // console.log(data.re);
-      if (store && store.length > 0) {
-        setIsloading(false);
-      }
     } catch (error) {
       console.log(error);
     } finally {
-      // setTimeout(()=>{
-      //   setIsloading(false);
-      // }, 1000)
+      setIsloading(false);
     }
   };
   useEffect(() => {
@@ -83,29 +77,41 @@ const page = () => {
           </div>
         ) : (
           <section className="h-max w-full flex-col flex">
-            <Cards
+            <HomeCards
               data={popularMovies}
               title={"Popular Movies"}
               type={"movie"}
             />
-            <Cards
+            <HomeCards
               data={topRatedMovies}
               title={"Top Rated Movies"}
               type={"movie"}
             />
-            <Cards
+            <HomeCards
               data={nowPlayingMovies}
               title={"Now Playing Movies"}
               type={"movie"}
             />
-            <Cards
-              data={upcomingMoies}
+            <HomeCards
+              data={upcomingMovies}
               title={"Upcoming Movies"}
               type={"movie"}
             />
-            <Cards data={popoularTV} title={"Popular TV Shows"} type={"tv"} />
-            <Cards data={topRatedTV} title={"Top Rated TV Shows"} type={"tv"} />
-            <Cards data={onAirTV} title={"Top Rated TV Shows"} type={"tv"} />
+            <HomeCards
+              data={popoularTV}
+              title={"Popular TV Shows"}
+              type={"tv"}
+            />
+            <HomeCards
+              data={topRatedTV}
+              title={"Top Rated TV Shows"}
+              type={"tv"}
+            />
+            <HomeCards
+              data={onAirTV}
+              title={"Top Rated TV Shows"}
+              type={"tv"}
+            />
           </section>
         )}
       </section>

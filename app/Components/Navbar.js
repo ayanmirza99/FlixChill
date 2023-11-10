@@ -1,8 +1,9 @@
-// import { useRouter } from "next/navigation";
+"use client"
 import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { FaBars } from "react-icons/fa6";
+import Link from "next/link";
 
 const Navbar = () => {
   const [color, setColor] = useState(false);
@@ -32,11 +33,26 @@ const Navbar = () => {
           FlixChill
         </div>
         <nav className="NavLinks hidden lg:inline-flex items-center gap-10 text-[0.9em] font-semibold">
-          <h3>Home</h3>
-          <h3>TV Shows</h3>
-          <h3>Movies</h3>
-          <h3>Recently Added</h3>
-          <h3>My List</h3>
+          <Link href="/home">
+            <h3 className={window.location.pathname === "/home" ? "text-red-600 font-bold" : ""}>
+              Home
+            </h3>
+          </Link>
+          <Link href="/tvShows">
+            <h3 className={window.location.pathname === "/tvShows" ? "text-red-600 font-bold" : ""}>
+              TV Shows
+            </h3>
+          </Link>
+          <Link href="/movies">
+            <h3 className={window.location.pathname === "/movies" ? "text-red-600 font-bold" : ""}>
+              Movies
+            </h3>
+          </Link>
+          <Link href="/mylist">
+            <h3 className={window.location.pathname === "/mylist" ? "text-red-600 font-bold" : ""}>
+              My List
+            </h3>
+          </Link>
         </nav>
         <div className="NavBtns text-[1.3em] flex items-center gap-8">
           <button>
@@ -58,14 +74,29 @@ const Navbar = () => {
       </div>
       {istoggle && (
         <nav
-          className="NavLinks text-[1.2em] z-50 fixed pt-[10px] pb-[40px] top-[80px] w-full bg-[rgba(0,0,0,0.9)] text-white font-bold flex items-center justify-center
+          className="NavLinks text-[1.2em] z-50 fixed pt-[10px] pb-[40px] top-[80px] w-full bg-[rgba(0,0,0,0.9)] text-white font-semibold flex items-center justify-center
         flex-col gap-10"
         >
-          <h3>Home</h3>
-          <h3>TV Shows</h3>
-          <h3>Movies</h3>
-          <h3>Recently Added</h3>
-          <h3>My List</h3>
+          <Link href="/home">
+            <h3 className={window.location.pathname === "/home" ? "text-red-600 font-bold" : ""}>
+              Home
+            </h3>
+          </Link>
+          <Link href="/tvShows">
+            <h3 className={window.location.pathname === "/tvShows" ? "text-red-600 font-bold" : ""}>
+              TV Shows
+            </h3>
+          </Link>
+          <Link href="/movies">
+            <h3 className={window.location.pathname === "/movies" ? "text-red-600 font-bold" : ""}>
+              Movies
+            </h3>
+          </Link>
+          <Link href="/mylist">
+            <h3 className={window.location.pathname === "/mylist" ? "text-red-600 font-bold" : ""}>
+              My List
+            </h3>
+          </Link>
         </nav>
       )}
     </section>

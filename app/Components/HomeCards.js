@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const Cards = ({ data, title, type }) => {
+const HomeCards = ({ data, title, type }) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -37,14 +37,15 @@ const Cards = ({ data, title, type }) => {
         <h1>{title}</h1>
       </div>
       <div className="w-full px-[2.1rem]">
-        <Carousel responsive={responsive} containerClass="carousel-container" draggable={true}>
+        <Carousel
+          responsive={responsive}
+          containerClass="carousel-container"
+          draggable={true}
+        >
           {data.map((movie, index) => {
             return (
-              <Link href={`/home/${type}/${movie.id}`}>
-                <div
-                  className="h-[250px] card w-full 2xl:w-[450px] xl:w-[300px] lg:w-[250px] md:w-[220px] sm:w-[300px]"
-                  key={index}
-                >
+              <Link href={`/home/${type}/${movie.id}`} key={index}>
+                <div className="h-[250px] card w-full 2xl:w-[450px] xl:w-[300px] lg:w-[250px] md:w-[220px] sm:w-[300px]">
                   <img
                     src={
                       movie && movie.backdrop_path ? (
@@ -62,7 +63,11 @@ const Cards = ({ data, title, type }) => {
                   />
                   <div className="card-info absolute flex flex-col items-start justify-end font-semibold text-[1rem] p-4 top-0 h-full w-full text-white invisible [transition:all_0.3s] bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
                     <h1>{movie.title || movie.name}</h1>
-                    <h1>imdb: {movie.vote_average && parseFloat((movie.vote_average).toFixed(1))}</h1>
+                    <h1>
+                      imdb:{" "}
+                      {movie.vote_average &&
+                        parseFloat(movie.vote_average.toFixed(1))}
+                    </h1>
                   </div>
                 </div>
               </Link>
@@ -74,4 +79,4 @@ const Cards = ({ data, title, type }) => {
   );
 };
 
-export default Cards;
+export default HomeCards;
