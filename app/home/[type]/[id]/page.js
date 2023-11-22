@@ -92,7 +92,7 @@ const page = ({ params }) => {
             />
           )}
           <div className="bg-gradient-to-t from-[rgba(0,0,0,0.9)] to-[rgba(0,0,0,0.5)] absolute top-0 z-20 w-full h-full flex items-end justify-center">
-            <div className="h-[20rem] w-[50vw] z-30 absolute -bottom-[25%] flex md:flex-row flex-col items-center text-[2rem] md:gap-[4rem] md:text-[3rem] text-white">
+            <div className="h-[20rem] w-[50vw] z-30 absolute -bottom-[15%] md:-bottom-[25%] flex md:flex-row flex-col items-center text-[2rem] md:gap-[4rem] md:text-[3rem] text-white">
               {isloading ? (
                 <Skeleton
                   height={300}

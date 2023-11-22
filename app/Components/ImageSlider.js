@@ -24,10 +24,10 @@ function ImageSlider({ data, loading }) {
             className="flex items-center w-screen justify-center h-[95vh] bg-cover relative"
             key={index}
           >
-            <div className="w-[100vw] h-[95vh] fixed">
+            <div className="w-[100vw] h-[95vh] fixed top-0">
               {loading ? (
                 <Skeleton
-                  className="h-full w-full"
+                height={1000}
                   baseColor="#202020"
                   highlightColor="#444"
                 />

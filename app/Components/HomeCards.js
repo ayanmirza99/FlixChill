@@ -21,16 +21,17 @@ const HomeCards = ({ data, title, type }) => {
       items: 3,
       slidesToSlide: 3,
     },
-    mobile: {
+    small: {
       breakpoint: { max: 768, min: 640 },
       items: 2,
       slidesToSlide: 2,
     },
-    small: {
+    mobile: {
       breakpoint: { max: 640, min: 0 },
       items: 1,
     },
   };
+
   return (
     <section className="flex justify-center items-center flex-col gap-6 h-[300px] mt-10">
       <div className="w-full text-white px-[2rem] text-[1.5rem] font-semibold">
@@ -38,6 +39,7 @@ const HomeCards = ({ data, title, type }) => {
       </div>
       <div className="w-full px-[2.1rem]">
         <Carousel
+          removeArrowOnDeviceType={["tablet", "mobile", "small"]}
           responsive={responsive}
           containerClass="carousel-container"
           draggable={true}
@@ -64,7 +66,7 @@ const HomeCards = ({ data, title, type }) => {
                   <div className="card-info absolute flex flex-col items-start justify-end font-semibold text-[1rem] p-4 top-0 h-full w-full text-white invisible [transition:all_0.3s] bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
                     <h1>{movie.title || movie.name}</h1>
                     <h1>
-                      imdb:{" "}
+                      Flix Meter:{" "}
                       {movie.vote_average &&
                         parseFloat(movie.vote_average.toFixed(1))}
                     </h1>

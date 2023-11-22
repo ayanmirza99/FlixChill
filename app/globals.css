@@ -7,24 +7,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-.review-container, html {
+.review-container, .SearchResult, html {
   --scrollbarBG: rgb(220 38 38);
   --thumbBG: rgb(220 38 38);
 }
-.review-container::-webkit-scrollbar, body::-webkit-scrollbar {
+.review-container::-webkit-scrollbar, body::-webkit-scrollbar, .SearchResult::-webkit-scrollbar {
   width: 4px;
 }
-.review-container, body {
+.review-container, body, .SearchResult {
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
 body::-webkit-scrollbar-track {
   background: rgba(0,0,0,0.9);
 }
-.review-container::-webkit-scrollbar-track{
+.review-container::-webkit-scrollbar-track, .SearchResult::-webkit-scrollbar-track{
   background: transparent;
 }
-.review-container::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+.review-container::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, .SearchResult::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG) ;
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);
@@ -37,6 +37,37 @@ body::-webkit-scrollbar-track {
 }
 .card:hover .card-info{
   visibility: visible;
+}
+.expanded{
+  height: 500px;
+  display: block;
+  transition: all 200ms ease-in-out;
+}
+.dropdown::before{
+  content: '';
+  position: absolute;
+  top: -0.6rem;
+  right: 1.1rem;
+  width: 22px;
+  height: 22px;
+  transform: rotate(45deg);
+  background: rgba(0,0,0,0.8);
+}
+/* .icon:hover .dropdown{
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+} */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
 }
 @layer components {
   .NavLinks > a{
