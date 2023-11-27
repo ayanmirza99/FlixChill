@@ -92,7 +92,7 @@ const page = ({ params }) => {
             />
           )}
           <div className="bg-gradient-to-t from-[rgba(0,0,0,0.9)] to-[rgba(0,0,0,0.5)] absolute top-0 z-20 w-full h-full flex items-end justify-center">
-            <div className="h-[20rem] w-[50vw] z-30 absolute -bottom-[15%] md:-bottom-[25%] flex md:flex-row flex-col items-center text-[2rem] md:gap-[4rem] md:text-[3rem] text-white">
+            <div className="h-[20rem] w-[50vw] z-30 absolute -bottom-[15%] md:-bottom-[25%] flex md:flex-row flex-col items-center  text-[2rem] md:gap-[4rem] md:text-[3rem] text-white">
               {isloading ? (
                 <Skeleton
                   height={300}
@@ -107,14 +107,14 @@ const page = ({ params }) => {
                 />
               )}
               <div className="details flex flex-col text-center md:mt-16 md:text-justify">
-                <div>
+                <div className="text-[0.8em] pb-2">
                   {isloading ? (
                     <Skeleton baseColor="#202020" highlightColor="#444" />
                   ) : (
                     details.title || details.name
                   )}
                 </div>
-                <div className="text-[0.4em]">
+                <div className="text-[0.5em] md:text-[0.4em]">
                   <div>
                     {isloading ? (
                       <Skeleton baseColor="#202020" highlightColor="#444" />
@@ -127,7 +127,7 @@ const page = ({ params }) => {
                   {isloading ? (
                     <Skeleton baseColor="#202020" highlightColor="#444" />
                   ) : (
-                    <div className="text-[0.4em] font-semibold text-red-600">
+                    <div className="text-[0.5em] md:text-[0.4em] font-semibold text-red-600">
                       Genres:{" "}
                       {details.genres &&
                         details.genres.map((genre) => genre.name).join(", ")}
@@ -148,7 +148,7 @@ const page = ({ params }) => {
             width={150}
           />
         ) : (
-          <div className="flex gap-6">
+          <div className="flex gap-6 mt-8">
             <button className="p-4 px-6 md:px-10 rounded-lg bg-yellow-500 text-white font-bold text[0.9rem] md:text-[1.2rem] hover:scale-105 duration-300">
               <a
                 href={`https://www.imdb.com/title/${details.imdb_id}`}
@@ -166,7 +166,7 @@ const page = ({ params }) => {
               {addBtn ? (
                 <div className="flex gap-2">
                   <CgAdd className="text-[2rem]" />
-                  <h1>My List</h1>
+                  <h1 className="pt-1 md:pt-0">My List</h1>
                 </div>
               ) : (
                 <div className="flex gap-2">
@@ -215,7 +215,7 @@ const page = ({ params }) => {
             </>
           ) : (
             <>
-              <div className="flex flex-col gap-4 p-10 md:text-[2rem]">
+              <div className="flex flex-col gap-4 p-10 text-[1.4rem] md:text-[2rem]">
                 <h1 className="text-[1.1em] text-red-600">Synopsis:</h1>
                 <h1 className="text-[0.8em]">{details.overview}</h1>
                 <h1 className="text-[0.9em]">

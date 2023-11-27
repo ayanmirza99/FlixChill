@@ -36,7 +36,7 @@ const Cards = ({ url1, url2 }) => {
 
   return (
     <>
-      <div className="flex justify-center items-center gap-[7rem] flex-wrap py-16 w-[90%]">
+      <div className="flex justify-center items-center gap-[2rem] sm:gap-[4rem] lg:gap-[7rem] flex-wrap py-16 w-[90%]">
         {loading ? (
           <div className="flex flex-col gap-8 text-center">
             <Skeleton
@@ -45,7 +45,7 @@ const Cards = ({ url1, url2 }) => {
               baseColor="#202020"
               highlightColor="#444"
             />
-            <div className="flex flex-wrap gap-[7rem]">
+            <div className="flex flex-wrap justify-center items-center gap-[7rem]">
               {Array(10)
                 .fill(0)
                 .map((item, index) => {
@@ -65,7 +65,7 @@ const Cards = ({ url1, url2 }) => {
           data.map((item, index) => {
             return (
               <Link href={`/home/${type}/${item.id}`} key={index}>
-                <div className="w-[14rem] h-[25rem] rounded-lg overflow-hidden flex flex-col gap-4 text-[1rem] text-center text-white duration-300 hover:scale-110">
+                <div className="w-[10rem] md:w-[14rem] h-[18rem] md:h-[25rem] rounded-lg overflow-hidden flex flex-col gap-4 text-[1rem] text-center text-white duration-300 hover:scale-110">
                   <img
                     className="h-[80%] w-full object-cover object-center"
                     src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}

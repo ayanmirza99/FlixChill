@@ -34,9 +34,9 @@ const page = () => {
   };
   useEffect(() => {
     if (searchModal) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [searchModal]);
 
@@ -86,12 +86,15 @@ const page = () => {
       {searchModal && (
         <section className="fixed h-[100vh] w-[100%] flex flex-col bg-[rgba(0,0,0,0.6)] z-50 ">
           <div className="w-full text-[2.5rem] md:text-[3.5rem] text-red-600 flex justify-end p-6 lg:p-12 pt-16">
-            <button className="hover:scale-125 duration-200 ease-in" onClick={() => setSearchModal(false)}>
+            <button
+              className="hover:scale-125 duration-200 ease-in"
+              onClick={() => setSearchModal(false)}
+            >
               <RiCloseLine />
             </button>
           </div>
           <div className="w-full flex justify-center items-center">
-          <SearchModal />
+            <SearchModal />
           </div>
         </section>
       )}

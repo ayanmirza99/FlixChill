@@ -9,7 +9,7 @@ const reviewData = [
   },
   {
     name: "Rafayel",
-    review: "Wah Bhai Maza Aagaya",
+    review: "Lol",
   },
   {
     name: "Atif",
@@ -17,15 +17,16 @@ const reviewData = [
   },
   {
     name: "Ramal",
-    review: "Good one absolutely loved the ending Cinematography, avting, direction everything is top-notch.",
+    review:
+      "Good one absolutely loved the ending Cinematography, avting, direction everything is top-notch.",
   },
   {
     name: "Laiba",
-    review: "Bekaar hai bhai pesa barbaad hogaya",
+    review: "Hats off to the director",
   },
   {
     name: "Ali",
-    review: "Acting k baadshah ho bhai kasam se",
+    review: "Mesmirizing",
   },
   {
     name: "Ali K",
@@ -41,43 +42,43 @@ const reviewData = [
   },
   {
     name: "Noman",
-    review: "A bit slow"
+    review: "A bit slow",
   },
   {
     name: "David",
-    review: "Visuals are stunning"
+    review: "Visuals are stunning",
   },
   {
     name: "ste_ver",
-    review: "Villian's arc is on par"
+    review: "Villian's arc is on par",
   },
   {
     name: "louissss",
-    review: "A real THRILLER!"
+    review: "A real THRILLER!",
   },
   {
     name: "Arman",
-    review: "vibe nhi hai yar"
+    review: "vibe nhi hai yar",
   },
   {
     name: "trent",
-    review: "Hitting all the right cords"
+    review: "Hitting all the right cords",
   },
   {
     name: "Kiara",
-    review: "<3"
+    review: "<3",
   },
   {
     name: "Chi'sun",
-    review: "Nah man! Don't have that same magic"
+    review: "Nah man! Don't have that same magic",
   },
   {
     name: "rio'al",
-    review: "Based"
+    review: "Based",
   },
   {
     name: "Big_ben",
-    review: "an utter classic"
+    review: "an utter classic",
   },
 ];
 export default reviewData;

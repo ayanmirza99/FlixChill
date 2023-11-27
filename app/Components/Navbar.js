@@ -30,7 +30,8 @@ const Navbar = () => {
     <section className="flex flex-col">
       <div
         className={`navbar w-screen h-[80px] flex items-center justify-between px-[2rem] fixed text-white lg:text-[1.5rem] z-30 ${
-          color ? "bg-[rgba(0,0,0,0.9)]" : ""} md:text-[1.2rem]
+          color ? "bg-[rgba(0,0,0,0.9)]" : ""
+        } md:text-[1.2rem]
         ${istoggle ? "bg-[rgba(0,0,0,0.9)]" : ""}`}
       >
         <div className="Navlogo text-[1.8em] text-red-600 font-bold">
@@ -91,7 +92,10 @@ const Navbar = () => {
             }
           >
             {window.location.pathname === "/home" && searchData ? (
-              <button onClick={() => setSearchModal(true)}>
+              <button
+                className="hover:text-red-600"
+                onClick={() => setSearchModal(true)}
+              >
                 <AiOutlineSearch />
               </button>
             ) : (
@@ -102,10 +106,10 @@ const Navbar = () => {
             <CgProfile onClick={() => setProfile(!profile)} />
             {profile && (
               <div className="dropdown w-max h-max absolute top-12 px-2 py-2 -right-4 lg:-right-4 bg-[rgba(0,0,0,0.9)] rounded-lg text-white text-[1.5rem] before:bg-[rgba(0,0,0,0.9)]">
-                <h1 className="text-[0.7em] cursor-pointer rounded-lg hover:bg-gray-900 p-4">
+                <h1 className="text-[0.7em] cursor-pointer rounded-lg hover:bg-[rgba(23,23,23)] p-4">
                   Demo user
                 </h1>
-                <Link href="/login">
+                <Link href="/">
                   <h1 className="text-[0.7em] hover:bg-red-600 duration-300 ease-out rounded-lg p-4">
                     Log out
                   </h1>
@@ -115,10 +119,13 @@ const Navbar = () => {
           </div>
           {istoggle ? (
             <button className="inline-flex lg:hidden" onClick={toggleNav}>
-              <AiOutlineClose />
+              <AiOutlineClose className="text-red-600 font-extrabold text-[1.8rem]" />
             </button>
           ) : (
-            <button className="inline-flex lg:hidden" onClick={toggleNav}>
+            <button
+              className="inline-flex lg:hidden text-red-600"
+              onClick={toggleNav}
+            >
               <FaBars />
             </button>
           )}

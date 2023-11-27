@@ -50,7 +50,7 @@ const SearchModal = () => {
   }, [handleSubmit]);
   return (
     <>
-      <div className="w-[50vw] min-w-[320px] h-[60vh] md:h-[80vh] text-[1rem] lg:text-[1.5rem] md:-mt-12 bg-[rgba(0,0,0,0.9)] rounded-2xl flex justify-center items-center flex-col gap-4 text-white shadow-[rgba(99,99,99,0.2)_0px_2px_8px_0px]">
+      <div className="min-w-[320px] w-[80vw] md:w-[50vw] h-[60vh] md:h-[80vh] text-[1rem] lg:text-[1.5rem] mt-12 md:-mt-12 bg-[rgba(0,0,0,0.9)] rounded-2xl flex justify-center items-center flex-col gap-4 text-white shadow-[rgba(99,99,99,0.2)_0px_2px_8px_0px]">
         <h1 className="text-[2em] text-red-600 font-bold text-center pt-4 md:pt-0">
           Search FlixChill
         </h1>
@@ -81,7 +81,7 @@ const SearchModal = () => {
         >
           <div className="w-full h-max flex justify-center items-center flex-col gap-6 p-8">
             {isloading ? (
-              <div className="w-full h-[400px] flex justify-center items-center">
+              <div className="w-full h-[200px] md:h-[400px] flex justify-center items-center">
                 <TailSpin
                   height="80"
                   width="80"
@@ -102,21 +102,25 @@ const SearchModal = () => {
                     }`}
                   >
                     <div
-                      onClick={() => setSearchModal(false)}
+                      onClick={() => {
+                        setTimeout(() => {
+                          setSearchModal(false);
+                        }, 4000);
+                      }}
                       key={index}
-                      className="w-full h-[25%] flex gap-6 rounded-lg overflow-hidden hover:bg-gray-900 duration-200 ease-in"
+                      className="w-full h-[25%] flex gap-6 rounded-lg p-4 overflow-hidden hover:bg-[rgba(23,23,23)] duration-200 ease-in"
                     >
-                      <div className="w-[30%] h-full object-cover object-center">
+                      <div className="w-[50%] md:w-[35%] h-full object-cover object-center">
                         <img
                           src={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
-                          className="h-[100%] w-[100%]"
+                          className="h-full w-full object-cover object-center"
                         />
                       </div>
-                      <div className="flex flex-col justify-center w-[70%] h-full gap-2 text-[0.6rem] md:text-[0.9rem] lg:text-[1.4rem]">
+                      <div className="flex flex-col justify-center w-[70%] h-full gap-2 text-[0.9rem] lg:text-[1.4rem]">
                         <h1 className="w-full">
                           {result.name || result.title}
                         </h1>
-                        <h1 className="text-[0.6em]">
+                        <h1 className="text-[0.7em]">
                           Flix Meter:{" "}
                           {parseFloat(result.vote_average.toFixed(1))}
                         </h1>
@@ -126,7 +130,7 @@ const SearchModal = () => {
                 );
               })
             ) : (
-              <div className="flex h-[400px] flex-col justify-center items-center">
+              <div className="flex h-[200px] md:h-[400px] flex-col justify-center items-center">
                 <MagnifyingGlass
                   visible={true}
                   height="120"
@@ -137,7 +141,9 @@ const SearchModal = () => {
                   glassColor="#c0efff"
                   color="#dc2626"
                 />
-                <h1 className="font-semibold">Couln't find aything for '{searchValue}'</h1>
+                <h1 className="font-semibold">
+                  Couln't find aything for '{searchValue}'
+                </h1>
               </div>
             )}
           </div>

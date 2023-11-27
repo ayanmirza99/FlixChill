@@ -42,12 +42,13 @@ const HomeCards = ({ data, title, type }) => {
           removeArrowOnDeviceType={["tablet", "mobile", "small"]}
           responsive={responsive}
           containerClass="carousel-container"
-          draggable={true}
+          draggable={false}
+          swipeable={true}
         >
           {data.map((movie, index) => {
             return (
               <Link href={`/home/${type}/${movie.id}`} key={index}>
-                <div className="h-[250px] card w-full 2xl:w-[450px] xl:w-[300px] lg:w-[250px] md:w-[220px] sm:w-[300px]">
+                <div className="h-[250px] card w-full 2xl:w-[450px] xl:w-[300px] lg:w-[250px] md:w-[220px] sm:w-[300px] group">
                   <img
                     src={
                       movie && movie.backdrop_path ? (
@@ -63,7 +64,7 @@ const HomeCards = ({ data, title, type }) => {
                     }
                     className="h-full w-full object-cover object-center relative"
                   />
-                  <div className="card-info absolute flex flex-col items-start justify-end font-semibold text-[1rem] p-4 top-0 h-full w-full text-white invisible [transition:all_0.3s] bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
+                  <div className="card-info absolute flex flex-col items-start justify-end font-semibold text-[1rem] p-4 top-0 h-full w-full text-white visible md:invisible group-hover:visible [transition:all_0.3s] bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
                     <h1>{movie.title || movie.name}</h1>
                     <h1>
                       Flix Meter:{" "}
