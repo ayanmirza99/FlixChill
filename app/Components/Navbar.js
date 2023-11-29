@@ -21,13 +21,22 @@ const Navbar = () => {
   };
 
   const changeColor = () => {
-    if (window.scrollY >= 100) {
-      setColor(true);
-    } else {
-      setColor(false);
+    if (typeof window !== 'undefined') {
+      if (window.scrollY >= 100) {
+        setColor(true);
+      } else {
+        setColor(false);
+      }
     }
   };
-  window.addEventListener("scroll", changeColor);
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeColor);
+
+    return () => {
+      window.removeEventListener('scroll', changeColor);
+    };
+  }, []);
 
   return (
     <section className="flex flex-col">
