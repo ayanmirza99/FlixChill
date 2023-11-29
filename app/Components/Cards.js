@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
+import { usePathname } from "next/navigation";
 
 const Cards = ({ url1, url2 }) => {
+  const pathname = usePathname();
   let type;
-  if (window.location.pathname === "/tvShows") {
+  if (pathname === "/tvShows") {
     type = "tv";
   } else {
     type = "movie";
