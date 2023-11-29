@@ -5,11 +5,14 @@ import { CgProfile } from "react-icons/cg";
 import { FaBars } from "react-icons/fa6";
 import Link from "next/link";
 import { useGlobalContext } from "../Context";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [color, setColor] = useState(false);
   const [istoggle, setIstoggle] = useState(false);
   const [profile, setProfile] = useState(false);
+
+  const pathname = usePathname();
 
   const { setSearchModal, searchData } = useGlobalContext();
 
@@ -41,7 +44,7 @@ const Navbar = () => {
           <Link href="/home">
             <h3
               className={
-                window.location.pathname === "/home"
+                pathname === "/home"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -52,7 +55,7 @@ const Navbar = () => {
           <Link href="/tvShows">
             <h3
               className={
-                window.location.pathname === "/tvShows"
+                pathname === "/tvShows"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -63,7 +66,7 @@ const Navbar = () => {
           <Link href="/movies">
             <h3
               className={
-                window.location.pathname === "/movies"
+                pathname === "/movies"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -74,7 +77,7 @@ const Navbar = () => {
           <Link href="/mylist">
             <h3
               className={
-                window.location.pathname === "/mylist"
+                pathname === "/mylist"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -86,12 +89,12 @@ const Navbar = () => {
         <div className="NavBtns text-[1.3em] flex items-center gap-8">
           <button
             className={
-              window.location.pathname === "/search"
+              pathname === "/search"
                 ? "text-red-600 font-bold"
                 : ""
             }
           >
-            {window.location.pathname === "/home" && searchData ? (
+            {pathname === "/home" && searchData ? (
               <button
                 className="hover:text-red-600"
                 onClick={() => setSearchModal(true)}
@@ -139,7 +142,7 @@ const Navbar = () => {
           <Link href="/home">
             <h3
               className={
-                window.location.pathname === "/home"
+                pathname === "/home"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -150,7 +153,7 @@ const Navbar = () => {
           <Link href="/tvShows">
             <h3
               className={
-                window.location.pathname === "/tvShows"
+                pathname === "/tvShows"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -161,7 +164,7 @@ const Navbar = () => {
           <Link href="/movies">
             <h3
               className={
-                window.location.pathname === "/movies"
+                pathname === "/movies"
                   ? "text-red-600 font-bold"
                   : ""
               }
@@ -172,7 +175,7 @@ const Navbar = () => {
           <Link href="/mylist">
             <h3
               className={
-                window.location.pathname === "/mylist"
+                pathname === "/mylist"
                   ? "text-red-600 font-bold"
                   : ""
               }

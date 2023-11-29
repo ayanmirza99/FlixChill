@@ -1,16 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "www.themoviedb.org"
+        hostname: 'www.themoviedb.org',
       },
       {
-        hostname:"image.tmdb.org"
-      }
+        hostname: 'image.tmdb.org',
+      },
     ],
   },
-  nextConfig,
 };
+
+module.exports = nextConfig;
